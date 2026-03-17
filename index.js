@@ -55,6 +55,9 @@ app.get('/', (req, res) => {
 // Body: { planId, monto, profileId, email, nombre, telefono, esVisitante }
 //
 app.post('/create_preference', async (req, res) => {
+  console.log('Body recibido:', JSON.stringify(req.body));
+  console.log('Tipo de monto:', typeof req.body.monto, '| Valor:', req.body.monto);
+
   const { planId, monto, profileId, email, nombre, telefono, esVisitante } = req.body;
 
   if (!planId || !monto || !email) {
