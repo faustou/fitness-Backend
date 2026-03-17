@@ -31,11 +31,14 @@ const DURACION_PLANES = {
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigins = process.env.FRONTEND_URL
-  ? [process.env.FRONTEND_URL]
-  : ['http://localhost:5173'];
-
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://fitness-frontend-topaz.vercel.app'
+  ],
+  methods: ['GET', 'POST', 'DELETE'],
+  credentials: true
+}));
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Private-Network', 'true');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Request-Private-Network');
